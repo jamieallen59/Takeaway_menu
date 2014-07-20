@@ -9,7 +9,8 @@ describe Menu do
 	
 	it 'should be able to print a menu' do
 		menu = Menu.new
-		expect(menu).to receive(:puts).and_return("1. Big Momma's fried chicken     £9.99
+		expect(menu).to receive(:print).and_return("\n
+	1. Big Momma's fried chicken     £9.99
 	2. Big Daddy's jerk chicken      £4.99
 	3. Hoisin crispy owl             £35.99
 	4. Artificial bacon (facon)      £5.99
