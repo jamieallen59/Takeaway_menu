@@ -1,6 +1,6 @@
 class Order
 
-attr_accessor :orders
+attr_accessor :orders, :name
 
 	def initialize name
 		@name = name
@@ -8,7 +8,7 @@ attr_accessor :orders
 	end
 
 	def has_a_name?
-		!@name.empty?
+		!name.empty?
 	end
 
 	def take_input
@@ -16,12 +16,12 @@ attr_accessor :orders
 	end
 
 	def save_order
-		@orders << take_input
+		orders << take_input
 	end
 
 	def calculate_order total
 		prices = orders.map { |order| total.current_menu[order.to_s] }
-		prices.inject { |full, price| full + price }
+		prices.inject { |full, price| full + price }.round(2)
 	end
 
 end

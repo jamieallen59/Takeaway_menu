@@ -30,4 +30,13 @@ describe Order do
 		expect(person_1.calculate_order(total)).to eq 14.98
 	end
 
+		it 'should calculate the total value of an order' do
+		total = Menu.new
+		allow(person_1).to receive(:gets).and_return("3")
+		person_1.save_order
+		allow(person_1).to receive(:gets).and_return("5")
+		person_1.save_order
+		expect(person_1.calculate_order(total)).to eq 44.98
+	end
+
 end
