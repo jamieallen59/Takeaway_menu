@@ -3,7 +3,7 @@ require './lib/order'
 require './lib/user_interface'
 
 @menu = Menu.new
-@run = UserInterface.new
+@run = UserInterface.new(Order.new)
 
 	def run_program
 		@run.opening_statement

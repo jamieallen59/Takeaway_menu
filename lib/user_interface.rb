@@ -8,6 +8,11 @@ class UserInterface
 	auth_token = '3ddd228fd4abe29ac40d31501aee369c'
 
 	@client = Twilio::REST::Client.new account_sid, auth_token
+	attr_reader :order
+
+	def initialize(order)
+		@order = order
+	end
 
 	def opening_statement
 		puts "WELCOME TO BIG MOMMA'S TRUCKIN' CLUCKIN' TAKEAWAY!"
@@ -17,23 +22,19 @@ class UserInterface
 		puts "You want to order some food?"
 		@answer = gets.chomp
 		if @answer.include? 'yes' || 'y' || 'Y'
-				create_order
+				add_order(order)
 			else
 				puts "Thank you. Come again."
 				exit
 		end
 	end
 
-	def create_order
+	def add_order(order)
 		puts "Ok, can I take your name for the order?"
-		name = gets.chomp
-		@order = Order.new(@name)
+		@name = gets.chomp
+		@order.name = @name
 		puts "\nThanks. Take a look at our menu"
 	end
-
-	# def thanks_with_name
-	# 	 puts "Thanks. Take a look at some of the grub we've got!"
-	# end
 
 	def show_menu
 		@menu = Menu.new
@@ -42,9 +43,9 @@ class UserInterface
 
 	def take_order
 		puts "Which number meal would you like? Select a number then press RETURN. Press it again once you're finished."
-		 	while !@order.orders.include?(0) do
-				@order.save_order
-			end
+		while !@order.orders.include?(0) do
+			@order.save_order
+		end
 		@order.orders.pop
 	end
 

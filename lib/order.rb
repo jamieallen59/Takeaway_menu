@@ -2,7 +2,7 @@ class Order
 
 attr_accessor :orders, :name
 
-	def initialize name
+	def initialize name = "default"
 		@name = name
 		@orders = []
 	end
