@@ -19,7 +19,7 @@ A simple takeaway menu allowing a user to order some grub and provide them with 
 
 Try it out:
 
-Clone the repo: git@github.com:jamieallen59/Takeaway_menu.git
+Clone the repo.
 
 If you would like to receive a message from the app using Twilio, update the 'send_text' method within user_interface.rb. Then uncomment 'send_text' in the runfile.rb.
 
@@ -27,6 +27,6 @@ In the Command line, run irb or Pry.
 
 require '.lib/runfile'
 
-run_program
+	$ run_program
 
 Enjoy!
