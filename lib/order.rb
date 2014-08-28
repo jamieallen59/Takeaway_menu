@@ -1,6 +1,6 @@
 class Order
 
-attr_accessor :orders, :name
+	attr_accessor :orders, :name
 
 	def initialize name = "default"
 		@name = name

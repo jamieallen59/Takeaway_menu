@@ -3,11 +3,11 @@ class Menu
 	attr_accessor :current_menu
 
 	def initialize
-		@current_menu = {   
-			"1" => 9.99, 
-			"2" => 4.99, 
-			"3" => 35.99, 
-			"4" => 5.99, 
+		@current_menu = {
+			"1" => 9.99,
+			"2" => 4.99,
+			"3" => 35.99,
+			"4" => 5.99,
 			"5" => 8.99
 		}
 	end

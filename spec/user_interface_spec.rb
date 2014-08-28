@@ -2,8 +2,8 @@ require 'user_interface'
 
 describe UserInterface do
 
-	let(:order) 				{ double :Order, :name= => "Jamie", name: "Jamie", orders:[1, 3, 3, 2]}
-	let(:user_interface)		{ UserInterface.new(order)											  }
+	let(:order) 					{ double :Order, :name= => "Jamie", name: "Jamie", orders:[1, 3, 3, 2]}
+	let(:user_interface)	{ UserInterface.new(order)											  										}
 
 
 	it 'should print an opening statement' do
@@ -16,7 +16,7 @@ describe UserInterface do
 		user_interface.want_to_order
 		expect(user_interface.want_to_order).to eq user_interface.add_order(order)
 	end
-	
+
 	it 'should create a new order using the persons name' do
 		allow(user_interface).to receive(:gets).and_return('Jamie')
 		user_interface.add_order(order)

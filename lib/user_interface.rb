@@ -22,10 +22,10 @@ class UserInterface
 		puts "You want to order some food?"
 		@answer = gets.chomp
 		if @answer.include? 'yes' || 'y' || 'Y'
-				add_order(order)
-			else
-				puts "Thank you. Come again."
-				exit
+			add_order(order)
+		else
+			puts "Thank you. Come again."
+			exit
 		end
 	end
 
@@ -44,38 +44,28 @@ class UserInterface
 	def take_order
 		puts "Which number meal would you like? Select a number then press RETURN. Press it again once you're finished."
 		while !@order.orders.include?(0) do
-			@order.save_order
+				@order.save_order
+			end
+			@order.orders.pop
 		end
-		@order.orders.pop
+
+		def calculate_bill total
+			bill = @order.calculate_order(total)
+			puts "Great. That will be £#{bill} please. \nYou'll receive a text with confirmation of your order."
+		end
+
+		def order_time
+			time_now = Time.now + 3600
+			@time = time_now.strftime("%H:%M")
+		end
+
+		def send_text
+			@client.account.messages.create(
+				:from => '+441563262030',
+				#Enter phone number between the quoatation marks below
+				:to => '',
+				:body => "Yo. Your meal will be with you at abooout #{order_time}. Cheers big ears."
+			)
+		end
+
 	end
-
-	def calculate_bill total
-		bill = @order.calculate_order(total)
-		puts "Great. That will be £#{bill} please. \nYou'll receive a text with confirmation of your order."
-	end
-
-	def order_time
-		time_now = Time.now + 3600
-		@time = time_now.strftime("%H:%M")
-	end
-
-	def send_text
-		@client.account.messages.create(
-		  :from => '+441563262030',
-		  :to => '+447872441306',
-		  :body => "Yo. Your meal will be with you at abooout #{order_time}. Cheers big ears."
-		)
-	end
-
-end
-
-
-
-
-
-
-
-
-
-
-
